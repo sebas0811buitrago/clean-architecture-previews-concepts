@@ -1,20 +1,3 @@
-class OrderProcessor {
-  paymentService: PaypalPayment;
-
-  constructor() {
-    this.paymentService = new PaypalPayment(); // Direct dependency on PaymentService
-  }
-
-  processOrder(orderId: string) {
-    const paymentStatus = this.paymentService.processPayment(orderId);
-    if (paymentStatus) {
-      console.log('Order processed successfully.');
-    } else {
-      console.log('Payment failed.');
-    }
-  }
-}
-
 const paypalService = (orderId: string) => {
   return true;
 };
@@ -27,13 +10,30 @@ class PaypalPayment {
 }
 
 const payUServices = (orderId: string) => {
-  return 'success';
+  return "success"; // success or failes
 };
 
 class PayUPayment {
   paymentTransaction(orderId: string) {
     // Logic to process payment
     return payUServices(orderId); // Assume payment is always successful
+  }
+}
+
+class OrderProcessor {
+  paymentService: PaypalPayment;
+
+  constructor() {
+    this.paymentService = new PaypalPayment(); // Direct dependency on PaymentService
+  }
+
+  processOrder(orderId: string) {
+    const paymentStatus = this.paymentService.processPayment(orderId);
+    if (paymentStatus) {
+      console.log("Order processed successfully.");
+    } else {
+      console.log("Payment failed.");
+    }
   }
 }
 

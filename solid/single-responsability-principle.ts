@@ -11,82 +11,82 @@ interface Employee {
 const employeeInformation = [
   {
     id: 1,
-    name: 'John Doe',
-    team: 'Engineering',
+    name: "John Doe",
+    team: "Engineering",
     hoursWorked: 40,
     hourlyRate: 25,
     totalPayment: 40 * 25,
-    paymentDate: '2024-08-31'
+    paymentDate: "2024-08-31",
   },
   {
     id: 2,
-    name: 'Jane Smith',
-    team: 'Marketing',
+    name: "Jane Smith",
+    team: "Marketing",
     hoursWorked: 35,
     hourlyRate: 30,
     totalPayment: 35 * 30,
-    paymentDate: '2024-08-31'
+    paymentDate: "2024-08-31",
   },
   {
     id: 3,
-    name: 'Alice Johnson',
-    team: 'Product',
+    name: "Alice Johnson",
+    team: "Product",
     hoursWorked: 45,
     hourlyRate: 28,
     totalPayment: 45 * 28,
-    paymentDate: '2024-08-31'
+    paymentDate: "2024-08-31",
   },
   {
     id: 4,
-    name: 'Bob Brown',
-    team: 'Customer Support',
+    name: "Bob Brown",
+    team: "Customer Support",
     hoursWorked: 38,
     hourlyRate: 22,
     totalPayment: 38 * 22,
-    paymentDate: '2024-08-31'
+    paymentDate: "2024-08-31",
   },
   {
     id: 5,
-    name: 'Eve Davis',
-    team: 'Sales',
+    name: "Eve Davis",
+    team: "Sales",
     hoursWorked: 42,
     hourlyRate: 27,
     totalPayment: 42 * 27,
-    paymentDate: '2024-08-31'
-  }
+    paymentDate: "2024-08-31",
+  },
 ];
 
-const reportCalculatorEmployees = (actor: 'CEO' | 'Accounting' | 'CTO') => {
-  if (actor === 'CEO') {
+const reportCalculatorEmployees = (actor: "CEO" | "Accounting" | "CTO") => {
+  if (actor === "CEO") {
     const report = employeeInformation.map((employee) => ({
       name: employee.name,
       totalPayment: employee.totalPayment,
-      hoursWorked: employee.hoursWorked
+      hoursWorked: employee.hoursWorked,
     }));
-    console.log('CEO Report:');
+    console.log("CEO Report:");
     console.log(report);
-  } else if (actor === 'Accounting') {
+  } else if (actor === "Accounting") {
     const report = employeeInformation.map((employee) => ({
       name: employee.name,
       paymentDate: employee.paymentDate,
-      totalPayment: employee.totalPayment
+      totalPayment: employee.totalPayment,
     }));
-    console.log('Accounting Report:');
+    console.log("Accounting Report:");
     console.log(report);
-  } else if (actor === 'CTO') {
+  } else if (actor === "CTO") {
     const report = employeeInformation.map((employee) => ({
       name: employee.name,
-      totalPayment: employee.totalPayment
+      hoursWorked: employee.hoursWorked,
     }));
-    console.log('CTO Report:');
+    console.log("CTO Report:");
     console.log(report);
   }
 };
 
 // Example usage:
-reportCalculatorEmployees('CEO');
-reportCalculatorEmployees('Accounting');
-reportCalculatorEmployees('CTO');
+reportCalculatorEmployees("CEO");
+reportCalculatorEmployees("Accounting");
+reportCalculatorEmployees("CTO");
 
 /// WITH SINGLE RESPONSABILITY PRINCIPLE
 
@@ -94,7 +94,7 @@ const generateCEOReport = (employees: Employee[]) => {
   return employees.map((employee) => ({
     name: employee.name,
     totalPayment: employee.totalPayment,
-    hoursWorked: employee.hoursWorked
+    hoursWorked: employee.hoursWorked,
   }));
 };
 
@@ -103,7 +103,7 @@ const generateAccountingReport = (employees: Employee[]) => {
   return employees.map((employee) => ({
     name: employee.name,
     paymentDate: employee.paymentDate,
-    totalPayment: employee.totalPayment
+    totalPayment: employee.totalPayment,
   }));
 };
 
@@ -111,6 +111,6 @@ const generateAccountingReport = (employees: Employee[]) => {
 const generateCTOReport = (employees: Employee[]) => {
   return employees.map((employee) => ({
     name: employee.name,
-    totalPayment: employee.totalPayment
+    hoursWorked: employee.hoursWorked,
   }));
 };
