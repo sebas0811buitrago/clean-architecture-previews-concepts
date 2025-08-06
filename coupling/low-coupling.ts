@@ -29,7 +29,7 @@ class OrderProcessor {
 
   constructor(paymentService: PaymentServiceInterface) {
     this.paymentService = paymentService; // Dependency is injected
-  }
+  } // change
 
   processOrder(orderId: string) {
     const paymentStatus = this.paymentService.processPayment(orderId);
